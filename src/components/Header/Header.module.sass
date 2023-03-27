@@ -1,0 +1,79 @@
+@import '../../styles/InterWeb/inter.css'
+
+.header
+  font-family: 'Inter'
+  font-style: normal
+  font-weight: 400
+  font-size: 14px
+  line-height: 20px
+  color: rgba(0, 11, 38, 0.8)
+  display: flex
+  justify-content: space-around
+  align-items: center
+  height: 80px
+  &Left
+    @media (max-width: 1000px)
+      justify-content: flex-start
+    right: 270px
+    position: relative
+    display: flex
+    flex-flow: row wrap
+    justify-content: space-around
+    width: 60%
+    &Logo
+      @media (max-width: 1600px)
+        position: relative
+        display: flex
+      @media (max-width: 1000px)
+        margin-left: 90px
+      position: relative
+      left: 200px
+      width: 94px
+      height: 18px
+    &Nav
+      @media (max-width: 1600px)
+        position: relative
+        left: 200px
+      @media (max-width: 1000px)
+        display: none
+      display: flex
+      justify-content: space-between
+      width: 400px
+      position: relative
+  &Right
+    width: 200px
+    display: flex
+    justify-content: space-between
+    &Location
+      display: flex
+      justify-content: space-around
+      width: 75px
+      &Pin
+        width: 20px
+    &Login
+      display: flex
+      justify-content: space-around
+      width: 70px
+      cursor: pointer
+      &Logo
+        width: 20px
+
+.link
+  color: rgba(0, 11, 38, 0.64)
+  text-decoration: none
+
+.activeLink
+  color: #000B26
+  &:after
+    content: ''
+    background: url("../../asserts/UnderlineLink.png") no-repeat
+    background-size: cover
+    display: flex
+    align-content: center
+    position: relative
+    height: 3px
+    width: 100%
+    cursor: default
+    top: 122%
+
+
