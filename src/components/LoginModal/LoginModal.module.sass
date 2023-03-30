@@ -4,7 +4,7 @@
 $modalBackground: #353535
 $enterText: rgba(0, 11, 38, 0.88)
 $inputBorderColor: rgba(0, 11, 38, 0.16)
-$inputTextColor: rgba(0, 11, 38, 0.4)
+$inputTextColor: #000B26CC
 $primaryButtonBackground: #07C88E
 $secondaryButtonBackground: rgba(62, 80, 114, 0.08)
 $secondaryButtonColor: rgba(0, 11, 38, 0.8)
@@ -38,13 +38,11 @@ $secondaryButtonColor: rgba(0, 11, 38, 0.8)
   z-index: 1001
   left: 50%
   top: 50%
-  margin-left: -240px
-  margin-top: -260px
+  margin-left: -238px
   background: white
   padding: 48px
   border-radius: 16px
-  width: 360px
-  height: 400px
+  width: 380px
 
   &Header
     display: flex
@@ -65,7 +63,7 @@ $secondaryButtonColor: rgba(0, 11, 38, 0.8)
 
   &Input
     @include login-input-and-buttons
-    width: 326px
+    width: 346px
     justify-content: flex-start
     top: 48px
     background: white
@@ -79,9 +77,9 @@ $secondaryButtonColor: rgba(0, 11, 38, 0.8)
 
   &Button
     @include login-input-and-buttons
-    border: 0
+    border: none
     cursor: pointer
-    width: 360px
+    width: 380px
     justify-content: center
     border-radius: 8px
     padding: 16px 24px
@@ -91,6 +89,22 @@ $secondaryButtonColor: rgba(0, 11, 38, 0.8)
     font-size: 16px
     line-height: 24px
     top: 80px
+    &Additional
+      font-family: "Inter"
+      font-style: normal
+      font-weight: 400
+      font-size: 16px
+      line-height: 20px
+      display: flex
+      position: relative
+      align-items: center
+      justify-content: flex-start
+      color: $primaryButtonBackground
+      border: none
+      background: none
+      padding: 0
+      cursor: pointer
+      height: 20px
 
 
 .notFirstInput
@@ -103,3 +117,20 @@ $secondaryButtonColor: rgba(0, 11, 38, 0.8)
 .secondaryButton
   background: $secondaryButtonBackground
   color: $secondaryButtonColor
+  top: 132px
+
+.additionalButtonsDiv
+  display: flex
+  position: relative
+  align-items: center
+  justify-content: space-between
+  flex-flow: row nowrap
+  top: 100px
+
+.modalLogin
+  height: 446px
+  margin-top: -271px
+
+.modalRegister
+  height: 360px
+  margin-top: -228px

@@ -6,15 +6,16 @@ const cx = cn.bind(styles);
 
 type LoginProps = {
     placeholder: string,
+    type: string,
     isFirstInput: boolean
 };
 
-export const LoginModalInput = ({placeholder, isFirstInput}: LoginProps): JSX.Element => {
+export const LoginModalInput = ({placeholder, type, isFirstInput}: LoginProps): JSX.Element => {
     return (
         <input
             className={cx(styles.modalInput, {
                 notFirstInput: !isFirstInput,
             })}
-            type="text" placeholder={placeholder}/>
+            type={type} placeholder={placeholder}/>
     )
 }

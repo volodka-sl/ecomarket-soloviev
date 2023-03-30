@@ -5,11 +5,13 @@ import GeoPin from '../../asserts/GeoPin.png';
 import LoginLogo from '../../asserts/LoginLogo.png';
 import {NavLink, Link} from 'react-router-dom';
 import cn from 'classnames';
-import {ModalLogin} from "../LoginModal/LoginModal";
+import {Overlay, ModalLogin, ModalRegister} from "../LoginModal/LoginModal";
 import {useModal} from "../../hooks/useModalClose";
+import {Portal} from "../Portal/Portal";
 
 export const Header = (): JSX.Element => {
     const [visible, setVisible] = useState(false);
+    const [modalType, setModalType] = useState("LOGIN");
 
     const ref = useRef<HTMLDivElement>(null);
 
@@ -20,7 +22,7 @@ export const Header = (): JSX.Element => {
             <div className={styles.headerLeft}>
                 <Link
                     to="/"
-                    >
+                >
                     <img className={styles.headerLeftLogo} src={HeaderLogo}/>
                 </Link>
 
@@ -62,10 +64,16 @@ export const Header = (): JSX.Element => {
                 </div>
 
                 <div className={styles.headerRightLogin} ref={ref}>
-                    <ModalLogin visible={visible} onClose={() => setVisible(false)} />
                     <img className={styles.headerRightLoginLogo} src={LoginLogo}/>
                     Войти
                 </div>
+                <Portal>
+                    <Overlay visible={visible} onClose={() => setVisible(false)}/>
+                    {modalType === "LOGIN" ? <ModalLogin visible={visible} onClose={() => setVisible(false)}
+                                                         onChange={() => setModalType("REGISTER")}/> :
+                        <ModalRegister visible={visible} onClose={() => setVisible(false)}
+                                       onChange={() => setModalType("LOGIN")}/>}
+                </Portal>
             </div>
         </header>
     )
