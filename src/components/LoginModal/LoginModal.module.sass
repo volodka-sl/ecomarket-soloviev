@@ -1,0 +1,105 @@
+@import '../../asserts/fonts/InterWeb/inter.css'
+
+
+$modalBackground: #353535
+$enterText: rgba(0, 11, 38, 0.88)
+$inputBorderColor: rgba(0, 11, 38, 0.16)
+$inputTextColor: rgba(0, 11, 38, 0.4)
+$primaryButtonBackground: #07C88E
+$secondaryButtonBackground: rgba(62, 80, 114, 0.08)
+$secondaryButtonColor: rgba(0, 11, 38, 0.8)
+
+@mixin login-input-and-buttons
+  display: flex
+  position: relative
+  align-items: center
+  font-family: 'Inter'
+  border-radius: 8px
+
+
+.overlay
+  position: fixed
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  background: $modalBackground
+  opacity: 0.6
+
+  display: flex
+  justify-content: center
+  align-items: center
+
+  z-index: 1000
+
+.modal
+  font-family: 'Inter'
+  position: fixed
+  z-index: 1001
+  left: 50%
+  top: 50%
+  margin-left: -240px
+  margin-top: -260px
+  background: white
+  padding: 48px
+  border-radius: 16px
+  width: 360px
+  height: 400px
+
+  &Header
+    display: flex
+    position: relative
+    justify-content: space-between
+    align-items: center
+    bottom: 8px
+    font-style: normal
+    font-weight: 600
+    font-size: 28px
+    line-height: 32px
+    color: $enterText
+
+    &Cross
+      width: 36px
+      height: 36px
+      cursor: pointer
+
+  &Input
+    @include login-input-and-buttons
+    width: 326px
+    justify-content: flex-start
+    top: 48px
+    background: white
+    color: $inputTextColor
+    border: 1px solid $inputBorderColor
+    padding: 20px 16px
+    font-style: normal
+    font-weight: 400
+    font-size: 14px
+    line-height: 20px
+
+  &Button
+    @include login-input-and-buttons
+    border: 0
+    cursor: pointer
+    width: 360px
+    justify-content: center
+    border-radius: 8px
+    padding: 16px 24px
+    gap: 10px
+    font-style: normal
+    font-weight: 500
+    font-size: 16px
+    line-height: 24px
+    top: 80px
+
+
+.notFirstInput
+  margin-top: 24px
+
+.primaryButton
+  background: $primaryButtonBackground
+  color: white
+
+.secondaryButton
+  background: $secondaryButtonBackground
+  color: $secondaryButtonColor

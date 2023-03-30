@@ -1,12 +1,20 @@
-import React, {ReactNode, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import styles from './Header.module.sass';
 import HeaderLogo from '../../asserts/HeaderLogo.png';
 import GeoPin from '../../asserts/GeoPin.png';
 import LoginLogo from '../../asserts/LoginLogo.png';
 import {NavLink, Link} from 'react-router-dom';
 import cn from 'classnames';
+import {ModalLogin} from "../LoginModal/LoginModal";
+import {useModal} from "../../hooks/useModalClose";
 
 export const Header = (): JSX.Element => {
+    const [visible, setVisible] = useState(false);
+
+    const ref = useRef<HTMLDivElement>(null);
+
+    useModal(ref, () => setVisible(true));
+
     return (
         <header className={styles.header}>
             <div className={styles.headerLeft}>
@@ -53,7 +61,8 @@ export const Header = (): JSX.Element => {
                     Казань
                 </div>
 
-                <div className={styles.headerRightLogin}>
+                <div className={styles.headerRightLogin} ref={ref}>
+                    <ModalLogin visible={visible} onClose={() => setVisible(false)} />
                     <img className={styles.headerRightLoginLogo} src={LoginLogo}/>
                     Войти
                 </div>

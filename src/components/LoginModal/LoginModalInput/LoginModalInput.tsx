@@ -9,11 +9,12 @@ type LoginProps = {
     isFirstInput: boolean
 };
 
-export const LoginModalInput = ({placeholder, isFirstInput = false}: LoginProps): JSX.Element => {
+export const LoginModalInput = ({placeholder, isFirstInput}: LoginProps): JSX.Element => {
     return (
-        <input className={cx(styles.modalInput, {
-            notFirstInput: !isFirstInput,
-        })}
-               type="text" placeholder={placeholder}/>
+        <input
+            className={cx(styles.modalInput, {
+                notFirstInput: !isFirstInput,
+            })}
+            type="text" placeholder={placeholder}/>
     )
 }

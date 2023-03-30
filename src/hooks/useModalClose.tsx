@@ -1,39 +1,16 @@
-import React, {useEffect} from "react";
-import {makeAutoObservable} from "mobx";
+import React, {RefObject, useEffect} from "react";
 
-// interface Props {
-//     ref: HTMLDivElement,
-//     handler: () => void,
-// }
-//
-// export const useModalClose = ({ref, handler}: Props) => {
-//     useEffect(() => {
-//         const reference = ref.current;
-//
-//         const listener = e => {
-//             if (reference === e.target) handler()
-//         }
-//
-//         reference?.addEventListener("mousedown", listener);
-//
-//         return () => reference?.removeEventListener("mousedown", listener)
-//     }, [ref, handler]);
-// }
 
-class ModalStore {
-    currentModal = null;
+export const useModal = (ref: RefObject<HTMLDivElement>, handler: () => void) => {
+    useEffect(() => {
+        const reference = ref?.current;
 
-    constructor() {
-        this.currentModal = null;
-        makeAutoObservable(this);
-    };
+        const listener = (e: MouseEvent) => {
+            if (reference === e.target) handler();
+        }
 
-    setCurrentModal = (modal) => {
-        this.currentModal = modal;
-    };
+        reference?.addEventListener("mousedown", listener)
 
-    clearCurrentModal = () => {
-        this.currentModal = null;
-    };
+        return () => reference?.removeEventListener("mousedown", listener)
+    }, [ref, handler])
 }
-
