@@ -1,5 +1,6 @@
 import React, {useRef} from "react";
 import ReactModal from "react-modal";
+import Modal from 'react-modal';
 import styles from "./LoginModal.module.sass";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store";
@@ -11,6 +12,7 @@ import {LoginModalButton} from "./Button/LoginModalButton";
 import {LoginModalAdditionalButton} from "./AdditionalButton/LoginModalAdditionalButton";
 import {useModal} from "../../hooks/useModalClose";
 
+Modal.setAppElement("#root");
 export const AuthorizeModal = () => {
     const {isLoginModalActive} = useSelector((state: RootState) => state.activeModal);
     const dispatch = useDispatch();
@@ -51,7 +53,8 @@ export const AuthorizeModal = () => {
                             <LoginModalInput placeholder="Пароль" type="password" isFirstInput={false}/>
                             <LoginModalButton theme="PRIMARY">Войти</LoginModalButton>
                             <div className={styles.additionalButtonsDiv}>
-                                <LoginModalAdditionalButton handler={() => dispatch(toggleLoginModal("REGISTER"))}>Войти с помощью
+                                <LoginModalAdditionalButton handler={() => dispatch(toggleLoginModal("REGISTER"))}>Войти
+                                    с помощью
                                     смс</LoginModalAdditionalButton>
                                 <LoginModalAdditionalButton
                                     handler={() => dispatch(toggleLoginModal("REGISTER"))}>Регистрация</LoginModalAdditionalButton>
