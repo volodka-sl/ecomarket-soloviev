@@ -1,21 +1,22 @@
 import React, {useRef, useState} from 'react';
 import styles from './Header.module.sass';
-import HeaderLogo from '../../asserts/HeaderLogo.png';
-import GeoPin from '../../asserts/GeoPin.png';
-import LoginLogo from '../../asserts/LoginLogo.png';
+import HeaderLogo from '../../assets/HeaderLogo.png';
+import GeoPin from '../../assets/GeoPin.png';
+import LoginLogo from '../../assets/LoginLogo.png';
 import {NavLink, Link} from 'react-router-dom';
 import cn from 'classnames';
-import {Overlay, ModalLogin, ModalRegister} from "../LoginModal/LoginModal";
 import {useModal} from "../../hooks/useModalClose";
-import {Portal} from "../Portal/Portal";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../store";
+import {toggleLoginModal} from "../../store/ModalLoginSlice";
+import {AuthorizeModal} from "../AuthorizeModal/AuthorizeModal";
 
 export const Header = (): JSX.Element => {
-    const [visible, setVisible] = useState(false);
-    const [modalType, setModalType] = useState("LOGIN");
+    const {activeModalLogin, isLoginModalActive} = useSelector((state: RootState) => state.activeModal);
+    const dispatch = useDispatch();
 
     const ref = useRef<HTMLDivElement>(null);
-
-    useModal(ref, () => setVisible(true));
+    useModal(ref, () => dispatch(toggleLoginModal("LOGIN")));
 
     return (
         <header className={styles.header}>
@@ -67,13 +68,7 @@ export const Header = (): JSX.Element => {
                     <img className={styles.headerRightLoginLogo} src={LoginLogo}/>
                     Войти
                 </div>
-                <Portal>
-                    <Overlay visible={visible} onClose={() => setVisible(false)}/>
-                    {modalType === "LOGIN" ? <ModalLogin visible={visible} onClose={() => setVisible(false)}
-                                                         onChange={() => setModalType("REGISTER")}/> :
-                        <ModalRegister visible={visible} onClose={() => setVisible(false)}
-                                       onChange={() => setModalType("LOGIN")}/>}
-                </Portal>
+                <AuthorizeModal/>
             </div>
         </header>
     )

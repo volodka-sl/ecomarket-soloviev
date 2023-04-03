@@ -1,4 +1,4 @@
-@import '../../asserts/fonts/InterWeb/inter.css'
+@import '../../assets/fonts/InterWeb/inter.css'
 
 
 $modalBackground: #353535
@@ -32,10 +32,13 @@ $secondaryButtonColor: rgba(0, 11, 38, 0.8)
 
   z-index: 1000
 
+  cursor: pointer
+
+
 .modal
   font-family: 'Inter'
   position: fixed
-  z-index: 1001
+  z-index: 1010
   left: 50%
   top: 50%
   margin-left: -238px
@@ -43,6 +46,7 @@ $secondaryButtonColor: rgba(0, 11, 38, 0.8)
   padding: 48px
   border-radius: 16px
   width: 380px
+  cursor: default
 
   &Header
     display: flex
@@ -89,6 +93,7 @@ $secondaryButtonColor: rgba(0, 11, 38, 0.8)
     font-size: 16px
     line-height: 24px
     top: 80px
+
     &Additional
       font-family: "Inter"
       font-style: normal
@@ -105,6 +110,19 @@ $secondaryButtonColor: rgba(0, 11, 38, 0.8)
       padding: 0
       cursor: pointer
       height: 20px
+
+  &Enter
+    &Code
+      display: flex
+      position: relative
+      flex-flow: column nowrap
+      top: 30px
+
+  &Phone
+    &Number
+      position: relative
+      color: $primaryButtonBackground
+      top: 2px
 
 
 .notFirstInput
@@ -134,3 +152,20 @@ $secondaryButtonColor: rgba(0, 11, 38, 0.8)
 .modalRegister
   height: 360px
   margin-top: -228px
+
+@mixin modal-code-universal
+  font-family: 'Inter'
+  font-style: normal
+  font-weight: 400
+  font-size: 14px
+  line-height: 20px
+
+.modalCode
+  @include modal-code-universal
+  height: 400px
+  margin-top: -248px
+
+  &Error
+    @include modal-code-universal
+    height: 446px
+    margin-top: -271px

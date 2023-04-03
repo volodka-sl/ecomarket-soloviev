@@ -6,16 +6,18 @@ const cx = cn.bind(styles);
 
 type ButtonProps = {
     theme: string,
+    handler?: () => void,
     children: ReactNode,
 }
 
-export const LoginModalButton = ({theme, children}: ButtonProps): JSX.Element => {
+export const LoginModalButton = ({theme, handler, children}: ButtonProps): JSX.Element => {
     return (
         <button
             className={cx(styles.modalButton, {
                 primaryButton: theme === "PRIMARY",
                 secondaryButton: theme === "SECONDARY",
             })}
+            onClick={handler}
         >
             {children}
         </button>
