@@ -149,6 +149,12 @@ $secondaryButtonColor: rgba(0, 11, 38, 0.8)
   height: 446px
   margin-top: -271px
 
+  &SingleError
+    height: 466px
+
+  &DoubleError
+    height: 486px
+
 .modalRegister
   height: 360px
   margin-top: -228px
@@ -169,3 +175,18 @@ $secondaryButtonColor: rgba(0, 11, 38, 0.8)
     @include modal-code-universal
     height: 446px
     margin-top: -271px
+
+.fieldError
+  //font-family: "Inter"
+  color: #FF4545
+  position: relative
+  display: flex
+  top: 54px
+  left: 16px
+  z-index: 1020
+
+.inputError
+  border: 1px solid #FF4545
+
+.modalAnimation
+  display: none

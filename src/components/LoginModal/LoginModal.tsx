@@ -1,10 +1,9 @@
-import React, {ReactNode, useRef, useState} from "react";
+import React, {useRef, useState} from "react";
 import styles from "../AuthorizeModal/LoginModal.module.sass";
 import cn from "classnames";
 import cnm from "classnames/bind"
 import ExitCross from "../../assets/ExitCross.png";
 import {useModal} from "../../hooks/useModalClose";
-import {LoginModalInput} from "../AuthorizeModal/Input/LoginModalInput";
 import {LoginModalButton} from "../AuthorizeModal/Button/LoginModalButton";
 import {LoginModalAdditionalButton} from "../AuthorizeModal/AdditionalButton/LoginModalAdditionalButton";
 import {useDispatch, useSelector} from "react-redux";
@@ -53,7 +52,7 @@ export const ModalCode = ({onClose, onChange}: ModalProps): JSX.Element => {
                 Введите код отправленный вам на телефон
                 <span className={styles.modalPhoneNumber}>+7 (999) 999 99 99</span>
             </div>
-            <LoginModalInput placeholder="Код" type="text" isFirstInput={true}/>
+            {/*<LoginModalInput placeholder="Код" type="text" isFirstInput={true}/>*/}
             <LoginModalButton theme="PRIMARY" handler={() => null}>Отправить</LoginModalButton>
             <div className={styles.additionalButtonsDiv}>
                 <LoginModalAdditionalButton handler={() => onChange()}>Не получила(-а) код</LoginModalAdditionalButton>
@@ -74,8 +73,8 @@ export const ModalLogin = ({onClose, onChange}: ModalProps): JSX.Element => {
                 Вход
                 <img src={ExitCross} className={styles.modalHeaderCross} ref={imageRef}/>
             </div>
-            <LoginModalInput placeholder="Телефон" type="text" isFirstInput={true}/>
-            <LoginModalInput placeholder="Пароль" type="password" isFirstInput={false}/>
+            {/*<LoginModalInput placeholder="Телефон" type="text" isFirstInput={true}/>*/}
+            {/*<LoginModalInput placeholder="Пароль" type="password" isFirstInput={false}/>*/}
             <LoginModalButton theme="PRIMARY">Войти</LoginModalButton>
             <div className={styles.additionalButtonsDiv}>
                 <LoginModalAdditionalButton handler={() => onChange()}>Войти с помощью
@@ -100,7 +99,7 @@ export const ModalRegister = ({onClose, onChange}: ModalProps): JSX.Element => {
                 Вход или регистрация
                 <img src={ExitCross} className={styles.modalHeaderCross} ref={imageRef}/>
             </div>
-            <LoginModalInput placeholder="Телефон" type="text" isFirstInput={true}/>
+            {/*<LoginModalInput placeholder="Телефон" type="text" isFirstInput={true}/>*/}
             <LoginModalButton theme="PRIMARY" handler={() => onChange()}>Получить код</LoginModalButton>
             <div className={styles.additionalButtonsDiv}>
                 <LoginModalAdditionalButton handler={() => onChange()}>Я уже
